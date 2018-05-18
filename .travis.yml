@@ -5,8 +5,11 @@ python:
   - 3.6
 
 env:
-  - FOO=foo
-  - FOO=bar
+  - BAR=bar
+  - FOO=123
+
+stages:
+  - deploy
 
 jobs:
   include:
