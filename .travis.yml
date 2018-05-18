@@ -5,14 +5,26 @@ python:
   - 3.6
 
 env:
-  - BAR=bar
-  - FOO=123
+  - TASK=check
+  - TASK=docs
+  - TASK=codecov
 
-stages:
-  - deploy
+install: echo "Installing... $TASK"
+script: echo "Scripting... $TASK"
 
 jobs:
   include:
-    - stage: deploy
-      install: echo "install- BAR=$BAR"
-      script: echo "script- FOO=$FOO"
+    - stage: check
+      install: echo "Checking... install $TASK"
+      script: echo "Checking... script $TASK"
+      python: 3.6
+      env: TASK=check
+    - stage: docs
+      install: echo "Docsing... install $TASK"
+      script: echo "Docsing... script $TASK"
+      python: 3.6
+      env: TASK=check
+    - stage: codecov
+      install: echo "Codecoving... install $TASK"
+      script: echo "Codecoving... script $TASK"
+      env: TASK=codecov
