@@ -7,6 +7,8 @@ python:
 env:
   global:
     - BAR="123"
+
+env:
   - FOO=foo
   - FOO=bar
 
