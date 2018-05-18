@@ -15,5 +15,5 @@ env:
 jobs:
   include:
     - stage: test
-      install: skip
+      install: ignore
       script: echo Deploy
