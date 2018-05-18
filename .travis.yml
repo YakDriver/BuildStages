@@ -1,14 +1,5 @@
 language: python
 
-python:
-  - 2.7
-  - 3.6
-
-install: 
-  - echo "Codecov..."
-  - echo "Installing... $TASK"
-script: echo "Scripting... $TASK"
-
 stages:
   - check
   - docs
@@ -24,4 +15,10 @@ jobs:
       install: echo "Docsing... install $TASK"
       script: echo "Docsing... script $TASK"
       python: 3.6
-
+    - stage: test
+      install: echo "Testing... install"
+      script: echo "Testing... script"
+      python:
+        - 2.7
+        - 3.4
+        - 3.5
