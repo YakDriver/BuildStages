@@ -15,5 +15,5 @@ env:
 jobs:
   include:
     - stage: test
-      install: ignore
-      script: echo Deploy
+      install: echo "install- BAR=$BAR"
+      script: echo "script- FOO=$FOO"
