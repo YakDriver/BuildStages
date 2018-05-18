@@ -4,13 +4,15 @@ python:
   - 2.7
   - 3.6
 
-env:
-  - TASK=check
-  - TASK=docs
-  - TASK=codecov
-
-install: echo "Installing... $TASK"
+install: 
+  - echo "Codecov..."
+  - echo "Installing... $TASK"
 script: echo "Scripting... $TASK"
+
+stages:
+  - check
+  - docs
+  - test
 
 jobs:
   include:
@@ -18,13 +20,8 @@ jobs:
       install: echo "Checking... install $TASK"
       script: echo "Checking... script $TASK"
       python: 3.6
-      env: TASK=check
     - stage: docs
       install: echo "Docsing... install $TASK"
       script: echo "Docsing... script $TASK"
       python: 3.6
-      env: TASK=check
-    - stage: codecov
-      install: echo "Codecoving... install $TASK"
-      script: echo "Codecoving... script $TASK"
-      env: TASK=codecov
+
