@@ -1,0 +1,17 @@
+python:
+  - 2.7
+  - 3.6
+
+env:
+  - FOO=foo
+  - FOO=bar
+  - BAR="123"
+
+script: 
+  - echo "FOO=$FOO"
+  - echo "BAR=$BAR"
+
+jobs:
+  include:
+    - stage: random stage
+      script: echo Deploy
