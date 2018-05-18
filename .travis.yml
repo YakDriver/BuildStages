@@ -9,10 +9,6 @@ env:
   - FOO=bar
   - BAR="123"
 
-script: 
-  - echo "FOO=$FOO"
-  - echo "BAR=$BAR"
-
 jobs:
   include:
     - stage: random stage
