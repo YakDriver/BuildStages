@@ -5,10 +5,10 @@ python:
   - 3.6
 
 env:
+  global:
+    - BAR="123"
   - FOO=foo
   - FOO=bar
-  - global:
-    - BAR="123"
 
 jobs:
   include:
