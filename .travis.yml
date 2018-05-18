@@ -5,6 +5,19 @@ stages:
   - docs
   - test
 
+python:
+  - 2.6
+  - 2.7
+  - 3.4
+  - 3.5
+  - 3.6
+  - pypy
+
+# if using the matrix, this chunk in here is test no matter what
+stage: codecov
+install: echo "Install for codecov"
+script: echo "Script for codecov"
+
 jobs:
   include:
     - stage: check
@@ -15,10 +28,7 @@ jobs:
       install: echo "Docsing... install $TASK"
       script: echo "Docsing... script $TASK"
       python: 3.6
-    - stage: test
-      install: echo "Testing... install"
-      script: echo "Testing... script"
-      python:
-        - 2.7
-        - 3.4
-        - 3.5
+    - stage: deploy to github releases
+      install: echo "Deploy install"
+      script: echo "Deploy script"
+      python: 3.6
