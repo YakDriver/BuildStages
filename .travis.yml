@@ -7,7 +7,8 @@ python:
 env:
   - FOO=foo
   - FOO=bar
-  - BAR="123"
+  global:
+    - BAR="123"
 
 jobs:
   include:
