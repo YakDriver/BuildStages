@@ -10,5 +10,6 @@ env:
 
 jobs:
   include:
-    - install: echo "install- BAR=$BAR"
+    - stage: deploy
+      install: echo "install- BAR=$BAR"
       script: echo "script- FOO=$FOO"
