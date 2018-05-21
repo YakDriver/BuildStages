@@ -5,30 +5,41 @@ stages:
   - docs
   - test
 
-python:
-  - 2.6
-  - 2.7
-  - 3.4
-  - 3.5
-  - 3.6
-  - pypy
+matrix:
+  include:
+    - env: TOXENV=check
+      python: 3.6
+    - env: TOXENV=docs
+      python: 3.6
+    - env: TOXENV=py26,codecov
+      python: 2.6
+    - env: TOXENV=py27,codecov
+      python: 2.7
+    - env: TOXENV=py34,codecov
+      python: 3.4
+    - env: TOXENV=py35,codecov
+      python: 3.5
+    - env: TOXENV=py36,codecov
+      python: 3.6
+    - env: TOXENV=pypy,codecov
+      python: pypy
 
 # if using the matrix, this chunk in here is test no matter what
 stage: codecov
-install: echo "Install for codecov"
-script: echo "Script for codecov"
+install: echo "Install for codecov TOXENV=$TOXENV"
+script: echo "Script for codecov TOXENV=$TOXENV"
 
 jobs:
   include:
     - stage: check
-      install: echo "Checking... install $TASK"
-      script: echo "Checking... script $TASK"
+      install: echo "Checking... install  TOXENV=$TOXENV"
+      script: echo "Checking... script  TOXENV=$TOXENV"
       python: 3.6
     - stage: docs
-      install: echo "Docsing... install $TASK"
-      script: echo "Docsing... script $TASK"
+      install: echo "Docsing... install  TOXENV=$TOXENV"
+      script: echo "Docsing... script  TOXENV=$TOXENV"
       python: 3.6
     - stage: deploy to github releases
-      install: echo "Deploy install"
-      script: echo "Deploy script"
-      python: 3.6
+      install: echo "Deploy install TOXENV=$TOXENV"
+      script: echo "Deploy script TOXENV=$TOXENV"
+      python: 3.6      
