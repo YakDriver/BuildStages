@@ -19,11 +19,11 @@ install: echo "Install for codecov"
 script:
   - |
     if [ "$TRAVIS_PYTHON_VERSION" = "pypy" ]; then
-      TOX_PY_VER=$TRAVIS_PYTHON_VERSION
+      TOX_PY_VER="$TRAVIS_PYTHON_VERSION"
     else
-      TOX_PY_VER="${TRAVIS_PYTHON_VERSION//./}"
+      TOX_PY_VER="py${TRAVIS_PYTHON_VERSION//./}"
     fi
-  - export TOXENV=py$TOX_PY_VER,codecov
+  - export TOXENV=$TOX_PY_VER,codecov
   - env
   - echo "Script for codecov"
 
