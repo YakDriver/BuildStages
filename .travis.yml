@@ -20,7 +20,12 @@ env:
 stage: codecov
 install: echo "Install for codecov"
 script:
-  - export TOXENV=py,$TOXFUNC
+  - |
+    if [ "$TRAVIS_PYTHON_VERSION" = "pypy" ]; then
+      $TOX_PY_VER=$TRAVIS_PYTHON_VERSION
+    else
+      $TOX_PY_VER="${TRAVIS_PYTHON_VERSION//./}"
+  - export TOXENV=py$TOX_PY_VER,$TOXFUNC
   - env
   - echo "Script for codecov"
 
