@@ -1,43 +1,32 @@
 language: python
 
-stages:
-  - check
-  - docs
-  - codecov
+matrix:
+  include:
+    - env: TOXENV=check
+      python: 3.6
+    - env: TOXENV=docs
+      python: 3.6
+    - env: TOXENV=py26,codecov
+      python: 2.6
+    - env: TOXENV=py27,codecov
+      python: 2.7
+    - env: TOXENV=py34,codecov
+      python: 3.4
+    - env: TOXENV=py35,codecov
+      python: 3.5
+    - env: TOXENV=py36,codecov
+      python: 3.6
+    - env: TOXENV=pypy,codecov
+      python: pypy
 
-python:
-  - 2.6
-  - 2.7
-  - 3.4
-  - 3.5
-  - 3.6
-  - pypy
-
-# if using the matrix, this chunk in here is test no matter what
-stage: codecov
-install: echo "Install for codecov"
+install:
+  - echo "test install (TOXENV=$TOXENV)"
 script:
-  - |
-    if [ "$TRAVIS_PYTHON_VERSION" = "pypy" ]; then
-      TOX_PY_VER="$TRAVIS_PYTHON_VERSION"
-    else
-      TOX_PY_VER="py${TRAVIS_PYTHON_VERSION//./}"
-    fi
-  - export TOXENV=$TOX_PY_VER,codecov
-  - env
-  - echo "Script for codecov"
+  - echo "test script (TOXENV=$TOXENV)"
 
 jobs:
   include:
     - stage: check
-      install: echo "Checking... install $TASK"
-      script: echo "Checking... script $TASK"
-      python: 3.6
-    - stage: docs
-      install: echo "Docsing... install $TASK"
-      script: echo "Docsing... script $TASK"
-      python: 3.6
-    - stage: deploy to github releases
-      install: echo "Deploy install"
-      script: echo "Deploy script"
+      install: echo "Check install (TOXENV=$TOXENV)"
+      script: echo "Check script (TOXENV=$TOXENV)"
       python: 3.6
