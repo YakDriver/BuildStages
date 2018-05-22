@@ -19,6 +19,7 @@ matrix:
     - env: TOXENV=pypy,codecov
       python: pypy
 
+stage: test
 install:
   - echo "test install (TOXENV=$TOXENV)"
 script:
