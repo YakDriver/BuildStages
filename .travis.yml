@@ -5,6 +5,7 @@ stages:
 stage: test
 install: echo "test install (TOXENV=$TOXENV)"
 script: echo "test script (TOXENV=$TOXENV)"
+python: 2.7
 jobs:
   include:
   - stage: check
