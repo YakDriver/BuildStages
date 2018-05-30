@@ -1,25 +1,23 @@
 language: python
-
 stages:
-  - test
-  - check
-
-matrix:
-  include:
-    - env: TOXENV=check
-      python: 3.6
-    - env: TOXENV=py27,codecov
-      python: 2.7
-    - env: TOXENV=py36,codecov
-      python: 3.6
-
+- test
+- check
+- deploy
 stage: test
 install: echo "test install (TOXENV=$TOXENV)"
 script: echo "test script (TOXENV=$TOXENV)"
-
 jobs:
   include:
     - stage: check
       install: echo "Check install (TOXENV=$TOXENV)"
       script: echo "Check script (TOXENV=$TOXENV)"
       python: 3.6
+    - stage: deploy
+      install: echo "Deploy 1 install (TOXENV=$TOXENV)"
+      script: echo "Deploy 1 script (TOXENV=$TOXENV)"
+      python: 3.6
+    - stage: deploy
+      install: echo "Deploy 2 install (TOXENV=$TOXENV)"
+      script: echo "Deploy 2 script (TOXENV=$TOXENV)"
+      python: 3.6
+    
