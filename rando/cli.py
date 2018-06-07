@@ -1,8 +1,14 @@
 # -*- coding: utf-8 -*-
-from __future__ import print_function
-from math import sin, cos, radians
-from rando import __version__
+"""
+Provides the entry point for a standard benchmark test.
+"""
+
 import timeit, sys
+
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals, with_statement)
+from rando import __version__
+
 
 def main():
     print("Rando Calculations Test App", __version__)
