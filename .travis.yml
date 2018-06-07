@@ -8,6 +8,7 @@ stages:
 python: 
 - 2.7
 - 3.6
+- pypy3
 stage: test
 install: 
   - echo "outer (test) install"
