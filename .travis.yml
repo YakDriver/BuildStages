@@ -9,8 +9,12 @@ python:
 - 2.7
 - 3.6
 stage: test
-install: echo "outer (test) install"
-script: echo "outer (test) script"
+install: 
+  - echo "outer (test) install"
+  - pip install --editable .
+script: 
+  - echo "outer (test) script"
+  - rando
 after_failure: echo "outer (test) failure"
 
 jobs:
