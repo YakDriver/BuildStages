@@ -1,20 +1,25 @@
 # -*- coding: utf-8 -*-
 """
-This is a pointless Python program to do something for a while to
+Rando is a semi-pointless Python program.
+
+Rando Calculations does something for a while to
 roughly test AppVeyor and Travis and various configurations
 unrelated to this computing.
 """
+from __future__ import (absolute_import, division, print_function,
+                        unicode_literals, with_statement)
 
-from __future__ import print_function
-from math import sin, cos, radians
+from math import cos, radians, sin
 
 __version__ = "0.0.1"
 
 
 def bench():
     """
-    This performs a benchmark with computations. Based largely on
-    All credit: https://gist.github.com/apalala/3fbbeb5305584d2abe05
+    Rerforms a benchmark with computations.
+
+    Based largely on
+    https://gist.github.com/apalala/3fbbeb5305584d2abe05
     """
     product = 1.0
     for counter in range(1, 1000, 1):
