@@ -1,6 +1,7 @@
 language: python
 stages:
 - check
+- inheriter
 - test
 - deploy
 
@@ -14,6 +15,7 @@ after_failure: echo "outer (test) failure"
 
 jobs:
   include:
+  - stage: inheriter
   - stage: check
     install: echo "check install"
     script: echo "check script"
