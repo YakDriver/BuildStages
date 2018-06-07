@@ -1,2 +1,0 @@
-# BuildStages
-Testing build stages
