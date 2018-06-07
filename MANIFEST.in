@@ -4,6 +4,8 @@ graft requirements
 graft rando
 graft tests
 
+include *.yml
+
 include .bumpversion.cfg
 include .coveragerc
 include .editorconfig

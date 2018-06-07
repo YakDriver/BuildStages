@@ -1,0 +1,16 @@
+[paths]
+source =
+   rando
+
+[run]
+branch = True
+source =
+    rando
+parallel = true
+
+[report]
+show_missing = true
+precision = 2
+omit =
+    *migrations*
+
