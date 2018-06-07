@@ -8,21 +8,22 @@ python:
 - 2.7
 - 3.6
 stage: test
-install: echo "test install (TOXENV=$TOXENV)"
-script: echo "test script (TOXENV=$TOXENV)"
+install: echo "outer (test) install"
+script: echo "outer (test) script"
+after_failure: echo "outer (test) failure"
 
 jobs:
   include:
   - stage: check
-    install: echo "Check install (TOXENV=$TOXENV)"
-    script: echo "Check script (TOXENV=$TOXENV)"
+    install: echo "check install"
+    script: echo "check script"
     python: 3.6
   - stage: deploy
-    install: echo "Deploy 1 install (TOXENV=$TOXENV)"
-    script: echo "Deploy 1 script (TOXENV=$TOXENV)"
+    install: echo "deploy 1 install"
+    script: echo "deploy 1 script"
     python: 3.6
   - stage: deploy
-    install: echo "Deploy 2 install (TOXENV=$TOXENV)"
-    script: echo "Deploy 2 script (TOXENV=$TOXENV)"
+    install: echo "deploy 2 install"
+    script: echo "deploy 2 script"
     python: 3.6
     
