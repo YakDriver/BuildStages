@@ -3,9 +3,6 @@ build: off
 image: Visual Studio 2013
 cache:
   - '%LOCALAPPDATA%\pip\Cache'
-matrix:
-  # yes
-  fast_finish: true
 environment:
   global:
     WITH_ENV: 'cmd /E:ON /V:ON /C .\ci\run_with_env.cmd'
