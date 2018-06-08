@@ -4,6 +4,7 @@ image: Visual Studio 2013
 cache:
   - '%LOCALAPPDATA%\pip\Cache'
 matrix:
+  # yes
   fast_finish: true
 environment:
   global:
