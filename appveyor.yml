@@ -9,6 +9,7 @@ environment:
 
 init:
   - ps: echo "Linear AppVeyor!"
+  - set
 test_script:
   - set TOXENV=check
   - set PYTHON_HOME=C:\Python36-x64
