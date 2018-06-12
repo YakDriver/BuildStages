@@ -22,9 +22,8 @@ test_script:
         Write-Host "Sha - $sha"
         (Get-Content setup.cfg).replace("(version = )(\d+\.\d+\.\d+).*", '$1$2.dev$sha') | Set-Content setup.cfg
         Write-Host "Seriously?"
+        Write-Host (Get-Content setup.cfg)
       }
-  - Write-Host (Get-Content setup.cfg)
-  - exit
   - set TOXENV=check
   - set PYTHON_HOME=C:\Python36-x64
   - set PYTHON_VERSION=3.6
