@@ -21,7 +21,7 @@ test_script:
         $sha = ($env:APPVEYOR_REPO_COMMIT).Substring(0,7)
         Write-Host "Sha - $sha"
         (Get-Content setup.cfg).replace("(version = )(\d+\.\d+\.\d+).*", '$1$2.dev$sha') | Set-Content setup.cfg
-        Write-Host (Get-Content setup.cfg)
+        Write-Host "Seriously?"
       }
   - Write-Host (Get-Content setup.cfg)
   - exit
