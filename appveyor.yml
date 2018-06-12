@@ -10,6 +10,7 @@ environment:
 init:
   - ps: echo "Linear AppVeyor!"
   - set
+  - dir
   - ps: ls $env:APPVEYOR_BUILD_FOLDER
   - ps: >-
       if($env:APPVEYOR_REPO_BRANCH -eq "master") {
