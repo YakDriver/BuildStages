@@ -10,6 +10,7 @@ environment:
 init:
   - ps: echo "Linear AppVeyor!"
   - set
+  - ps: ls $env:APPVEYOR_BUILD_FOLDER
   - ps: >-
       if($env:APPVEYOR_REPO_BRANCH -eq "master") {
         # sed equivalent
@@ -19,7 +20,8 @@ init:
         Write-Host "Sha - $sha"
         (Get-Content setup.cfg).replace("(version = )(\d+\.\d+\.\d+).*", '$1$2.dev$sha') | Set-Content setup.cfg
         Write-Host "Setup:" + (Get-Content setup.cfg)
-      }  
+      }
+  - exit
 test_script:
   - set TOXENV=check
   - set PYTHON_HOME=C:\Python36-x64
