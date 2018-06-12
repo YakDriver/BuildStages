@@ -25,6 +25,7 @@ jobs:
   - stage: check
     install:
       - echo "check install"
+      - sha=${TRAVIS_COMMIT:0:7} 
       - sed -i -E "s/^(version = )([0-9]+\.[0-9]+\.[0-9]+).*$/\1\2.dev.$sha/" setup.cfg
       - cat setup.cfg
     script: echo "check script"
