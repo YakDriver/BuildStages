@@ -10,6 +10,16 @@ environment:
 init:
   - ps: echo "Linear AppVeyor!"
   - set
+  - ps: >-
+      if($env:APPVEYOR_REPO_BRANCH -eq "master") {
+        # sed equivalent
+        # sed -i -E "s/^(version = )([0-9]+\.[0-9]+\.[0-9]+).*/\1\2.dev$sha/" $TRAVIS_BUILD_DIR/setup.cfg
+        # "([a-z]+)\s([a-z]+)",'$2, $1'
+        $sha = ($env:APPVEYOR_REPO_COMMIT).Substring(0,7)
+        Write-Host "Sha - $sha"
+        (Get-Content setup.cfg).replace("(version = )(\d+\.\d+\.\d+).*", '$1$2.dev$sha') | Set-Content setup.cfg
+        Write-Host "Setup:" + (Get-Content setup.cfg)
+      }  
 test_script:
   - set TOXENV=check
   - set PYTHON_HOME=C:\Python36-x64
